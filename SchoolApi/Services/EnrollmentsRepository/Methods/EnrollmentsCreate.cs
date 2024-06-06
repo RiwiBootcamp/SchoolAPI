@@ -18,10 +18,10 @@ namespace SchoolApi.Services.EnrollmentsRepository.Methods
       var data = _context.Enrollments.Add(enrollment);
       _context.SaveChanges();
 
-      // Student student = _context.Students.Find(enrollment.IdStudent);
+      Student student = _context.Students.Find(enrollment.IdStudent);
       // var student = req.GetById(enrollment.IdStudent);
 
-      // await SendEnrollmentEmailStudent.SendEmail(student);
+      await SendEnrollmentEmailStudent.SendEmail(student);
       return new Response<Enrollment>(enrollment, "Enrollment was sucessfully created");
     }
   } 

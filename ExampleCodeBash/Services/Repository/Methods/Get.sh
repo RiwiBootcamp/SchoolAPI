@@ -17,12 +17,27 @@ namespace "\$project_name".Services."\$global_model_naming"Repository.Methods
         
     public "\$http_getAll_return" GetAll()
     {
-      return _"\$db_context_field"."\$global_model_naming".ToList();
+      var data = _context."\$global_model_naming".ToList();
+
+      return new "\$http_getAll_return"(data, "This is all data from "\$global_model_naming"");
+    }
+
+
+    public "\$http_getAllPaging_return" GetAll(int pageNumber)
+    {
+      int pageSize = 2;
+      var data = _context."\$global_model_naming"
+        .Skip((pageNumber -1) * pageSize)
+        .Take(pageSize)
+        .ToList();
+
+      return new "\$http_getAllPaging_return"(data, pageNumber, pageSize, "This is data for "\$global_model_naming"");
     }
 
     public "\$http_getById_return" GetById(int id)
     {
-      return _"\$db_context_field"."\$global_model_naming".Find(id);
+      var data = _context."\$global_model_naming".Find(id);
+      return new "\$http_getById_return"(data, ""\$model_name" was founded");
     }
   } 
 }

@@ -20,6 +20,13 @@ namespace "\$project_name".Controllers
     }
 
     [HttpGet]
+    public "\$http_getAllPaging_return" GetAll([FromQuery] int pageNumber)
+    {
+      return _"\$repository_filed".GetAll(pageNumber);
+    }
+
+    [HttpGet]
+    [Route("all")]
     public "\$http_getAll_return" GetAll()
     {
       return _"\$repository_filed".GetAll();

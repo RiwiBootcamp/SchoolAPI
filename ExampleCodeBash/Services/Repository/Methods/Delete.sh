@@ -19,7 +19,7 @@ namespace "\$project_name".Services."\$global_model_naming"Repository.Methods
       var dataEntry = _context."\$global_model_naming".Find(id);
       _context."\$global_model_naming".Remove(dataEntry);
       _context.SaveChanges();
-      return dataEntry.Id;
+      return new "\$http_delete_return"(dataEntry.Id, $""\$model_name" with id {dataEntry.Id} remove sucessfully");
     }
   } 
 }

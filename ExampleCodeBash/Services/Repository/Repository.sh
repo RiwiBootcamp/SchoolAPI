@@ -18,6 +18,12 @@ namespace "\$project_name".Services."\$global_model_naming"Repository
       return taskUnit.GetAll();
     }
 
+    public "\$http_getAllPaging_return" GetAll(int pageNumber)
+    {
+      "\$global_model_naming"Get taskUnit = new(_context);
+      return taskUnit.GetAll(pageNumber);
+    }
+
     public "\$http_getById_return" GetById(int id)
     {
       "\$global_model_naming"Get taskUnit = new(_context);

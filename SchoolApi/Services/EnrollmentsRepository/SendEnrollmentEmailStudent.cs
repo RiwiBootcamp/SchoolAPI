@@ -13,11 +13,15 @@ namespace SchoolApi.Services.EnrollmentsRepository
         From = new Recipent{Email = "dannyKentala@trial-pq3enl60en8l2vwr.mlsender.net"},
         To = 
         [
-          new Recipent{Email = "gidigabej.hugobepoc@jollyfree.com"},
+          /* Try to use a real email 
+            also work with this temporal email generator
+            https://temp-mail.org/en/view/
+          */
+
           new Recipent{Email = studentInfo.Email}
         ],
         Subject = "Confirmation email",
-        Html = $"Congratulations {studentInfo.FullName} your are now enrolled in the course"
+        Html = $"Congratulations your are now enrolled in the course: Good"
       };
 
       MailerSendClient mailerSendClient = new MailerSendClient();

@@ -17,9 +17,9 @@ namespace "\$project_name".Services."\$global_model_naming"Repository.Methods
 
     public "\$http_post_return" Create("\$model_name" "\$model_name_argument")
     {
-      _context."\$global_model_naming".Add("\$model_name_argument");
+      var data = _context."\$global_model_naming".Add("\$model_name_argument");
       _context.SaveChanges();
-      return  "\$model_name_argument";
+      return new "\$http_post_return"(data.Entity, ""\$model_name" was sucessfully created");
     }
   } 
 }

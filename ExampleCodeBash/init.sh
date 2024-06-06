@@ -9,7 +9,7 @@ cd $rootBashDir
 
 ##----- GLOBAL VARIBLES -----##
 declare projectName="SchoolApi"
-declare modelName="Student"
+declare modelName="Cou"
 declare globalModelNaming=${modelName}s
 
 declare rootProjectDir="${rootDir}/${projectName}"
@@ -58,3 +58,6 @@ export modelName
 #-- Repository
 ./Services/Repository/Repository.sh
 ./Services/Repository/IRepository.sh
+
+#-- Remove chmod for prevention
+chmod -x init.sh

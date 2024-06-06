@@ -21,7 +21,7 @@ namespace "\$project_name".Services."\$global_model_naming"Repository.Methods
       "\$model_name_argument".Id = id;
       _context.Entry("\$model_name_argument").State = EntityState.Modified;
       _context.SaveChanges();
-      return "\$model_name_argument";
+      return new "\$http_put_return"("\$model_name_argument", $""\$model_name" ID: {"\$model_name_argument".Id}, was updated");
     }
   } 
 }

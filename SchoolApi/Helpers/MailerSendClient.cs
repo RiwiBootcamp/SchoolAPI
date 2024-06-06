@@ -10,9 +10,9 @@ namespace SchoolApi.Helpers
     private readonly HttpClient _httpClient = new HttpClient();
     private readonly EmailClientOptions _options;
 
-    public MailerSendClient (EmailClientOptions options = default)
+    public MailerSendClient (EmailClientOptions options = null)
     {
-      if(options == default)
+      if(options == null)
       {
         _options = new EmailClientOptions()
         {
