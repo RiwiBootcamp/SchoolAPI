@@ -1,41 +1,59 @@
-namespace "$project_name".Services."$global_model_naming"Repository
+using SchoolApi.Data;
+using SchoolApi.Models;
+using SchoolApi.Models.Dtos;
+using SchoolApi.Services.StudentsRepository.Methods;
+
+namespace SchoolApi.Services.StudentsRepository
 {
-  public class "$global_model_naming"Repository: I"$global_model_naming"Repository
+  public class StudentsRepository: IStudentsRepository
   {
     private readonly BaseContext _context;
 
-    public "$global_model_naming"Repository(BaseContext context)
+    public StudentsRepository(BaseContext context)
     {
       _context = context;
     }
 
-    public "$http_getAll_return" GetAll()
+    public Response<IEnumerable<Student>> GetAll()
     {
-      "$global_model_naming"Get taskUnit = new(_context);
+      StudentsGet taskUnit = new(_context);
       return taskUnit.GetAll();
     }
 
-    public "$http_getById_return" GetById(int id)
+    public Response<Student> GetById(int id)
     {
-      "$global_model_naming"Get taskUnit = new(_context);
+      StudentsGet taskUnit = new(_context);
       return taskUnit.GetById(id);
     }
 
-    public "$http_post_return" Create("$model_name" "$model_name_argument")
+    // queries
+    public PageResponse<IEnumerable<Student>> GetAll(int pageNumber)
     {
-      "$global_model_naming"Create taskUnit = new(_context);
-      return taskUnit.Create("$model_name_argument");
+      StudentsGet taskUnit = new(_context);
+      return taskUnit.GetAll(pageNumber);
     }
 
-    public "$http_put_return" Update(int id, "$model_name" "$model_name_argument")
+    public Response<IEnumerable<Student>> GetStudentBirthDay(DateOnly birthDay)
     {
-      "$global_model_naming"Update taskUnit  = new(_context);
-      return taskUnit.Update(id, "$model_name_argument");
+      StudentsGet taskUnit = new(_context);
+      return taskUnit.GetStudentBirthDay(birthDay);
     }
 
-    public "$http_delete_return" Delete(int id)
+    public Response<Student> Create(Student student)
     {
-      "$global_model_naming"Delete taskUnit = new(_context);
+      StudentsCreate taskUnit = new(_context);
+      return taskUnit.Create(student);
+    }
+
+    public Response<Student> Update(int id, Student student)
+    {
+      StudentsUpdate taskUnit  = new(_context);
+      return taskUnit.Update(id, student);
+    }
+
+    public Response<int> Delete(int id)
+    {
+      StudentsDelete taskUnit = new(_context);
       return taskUnit.Delete(id);
     } 
   }

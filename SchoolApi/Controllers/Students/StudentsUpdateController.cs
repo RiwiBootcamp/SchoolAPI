@@ -1,23 +1,24 @@
-using "$project_name".Models;
-using "$project_name".Services."$global_model_naming"Repository;
+using SchoolApi.Models;
+using SchoolApi.Services.StudentsRepository;
 using Microsoft.AspNetCore.Mvc;
+using SchoolApi.Models.Dtos;
 
-namespace "$project_name".Controllers
+namespace SchoolApi.Controllers
 {
-  [Route("$api_endpoint_name")]
+  [Route("api/students")]
   [ApiController]
-  public class "$global_model_naming"UpdateController: ControllerBase
+  public class StudentsUpdateController: ControllerBase
   {
-    private readonly I"$global_model_naming"Repository _"$repository_filed";
-    public "$global_model_naming"UpdateController(I"$global_model_naming"Repository "$repository_filed")
+    private readonly IStudentsRepository _studentRepository;
+    public StudentsUpdateController(IStudentsRepository studentRepository)
     {
-      _"$repository_filed" = "$repository_filed";
+      _studentRepository = studentRepository;
     }
 
     [HttpPut("{Id}")]
-    public "$http_put_return" Update(int Id, "$model_name" "$model_name_argument")
+    public Response<Student> Update(int Id, Student student)
     {
-      return _"$repository_filed".Update(Id, "$model_name_argument");
+      return _studentRepository.Update(Id, student);
     }
   }
 }

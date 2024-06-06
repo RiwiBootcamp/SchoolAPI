@@ -18,13 +18,13 @@ namespace SchoolApi.Controllers
     }
 
     [HttpGet]
+    [Route("query/paging")]
     public PageResponse<IEnumerable<Teacher>> GetAll([FromQuery] int pageNumber)
     {
       return _teacherRepository.GetAll(pageNumber);
     }
 
     [HttpGet]
-    [Route("all")]
     public Response<IEnumerable<Teacher>> GetAll()
     {
       return _teacherRepository.GetAll();

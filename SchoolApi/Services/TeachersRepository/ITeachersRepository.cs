@@ -9,6 +9,6 @@ namespace SchoolApi.Services.TeachersRepository
     IHttpPut<Teacher>, 
     IHttpDelete<Teacher>
   {
-    
+
   }
 }

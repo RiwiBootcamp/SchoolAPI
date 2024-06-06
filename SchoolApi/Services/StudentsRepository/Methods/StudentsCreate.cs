@@ -1,22 +1,23 @@
-using "$project_name".Data;
-using "$project_name".Models;
-using "$project_name".Services.HttpMethods;
+using SchoolApi.Data;
+using SchoolApi.Models;
+using SchoolApi.Models.Dtos;
+using SchoolApi.Services.HttpMethods;
 
-namespace "$project_name".Services."$global_model_naming"Repository.Methods
+namespace SchoolApi.Services.StudentsRepository.Methods
 {
-  public class "$global_model_naming"Create: IHttpPost<"$model_name">
+  public class StudentsCreate: IHttpPost<Student>
   {
     // BaseContext _context
-    private readonly "$db_context_name" _"$db_context_field";
-    public "$global_model_naming"Create("$db_context_name" "$db_context_field"){
-      _"$db_context_field" = "$db_context_field";
+    private readonly BaseContext _context;
+    public StudentsCreate(BaseContext context){
+      _context = context;
     }
 
-    public "$http_post_return" Create("$model_name" "$model_name_argument")
+    public Response<Student> Create(Student student)
     {
-      _context."$global_model_naming".Add("$model_name_argument");
+      var data = _context.Students.Add(student);
       _context.SaveChanges();
-      return  "$model_name_argument";
+      return  new Response<Student>(data.Entity, "Student was sucessfully created");
     }
   } 
 }

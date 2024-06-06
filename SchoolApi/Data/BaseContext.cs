@@ -12,5 +12,8 @@ namespace SchoolApi.Data
     // Remember that model is singular, and table is plural
     // DbSet<Model> SqlTable
     public DbSet<Teacher> Teachers {get; set;}
+    public DbSet<Student> Students {get; set;}
+    public DbSet<Enrollment> Enrollments {get; set;}
+    public DbSet<Course> Courses {get; set;}
   }
 }

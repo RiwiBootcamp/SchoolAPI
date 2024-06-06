@@ -1,12 +1,15 @@
-using "$project_name".Models;
-using "$project_name".Services.HttpMethods;
+using SchoolApi.Models;
+using SchoolApi.Models.Dtos;
+using SchoolApi.Services.HttpMethods;
 
-namespace "$project_name".Services."$global_model_naming"Repository
+namespace SchoolApi.Services.StudentsRepository
 {
   // We have to create the following methods
-  public interface I"$global_model_naming"Repository: IHttpGet<"$model_name">, 
-    IHttpPost<"$model_name">, 
-    IHttpPut<"$model_name">, 
-    IHttpDelete<"$model_name">
-  { }
+  public interface IStudentsRepository: IHttpGet<Student>, 
+    IHttpPost<Student>, 
+    IHttpPut<Student>, 
+    IHttpDelete<Student>
+  {
+    public Response<IEnumerable<Student>> GetStudentBirthDay(DateOnly birthDay);
+  }
 }

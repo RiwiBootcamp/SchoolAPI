@@ -1,22 +1,23 @@
-using "$project_name".Services."$global_model_naming"Repository;
+using SchoolApi.Services.StudentsRepository;
 using Microsoft.AspNetCore.Mvc;
+using SchoolApi.Models.Dtos;
 
-namespace "$project_name".Controllers
+namespace SchoolApi.Controllers
 {
-  [Route("$api_endpoint_name")]
+  [Route("api/students")]
   [ApiController]
-  public class "$global_model_naming"DeleteController: ControllerBase
+  public class StudentsDeleteController: ControllerBase
   {
-    private readonly I"$global_model_naming"Repository _"$repository_filed";
-    public "$global_model_naming"DeleteController(I"$global_model_naming"Repository "$repository_filed")
+    private readonly IStudentsRepository _studentRepository;
+    public StudentsDeleteController(IStudentsRepository studentRepository)
     {
-      _"$repository_filed" = "$repository_filed";
+      _studentRepository = studentRepository;
     }
 
     [HttpDelete("{Id}")]
-    public "$http_delete_return" Delete(int Id)
+    public Response<int> Delete(int Id)
     {
-      return _"$repository_filed".Delete(Id);
+      return _studentRepository.Delete(Id);
     }
   }
 }

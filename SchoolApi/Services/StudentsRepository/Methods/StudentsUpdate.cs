@@ -1,24 +1,25 @@
-using "$project_name".Data;
-using "$project_name".Models;
-using "$project_name".Services.HttpMethods;
+using SchoolApi.Data;
+using SchoolApi.Models;
+using SchoolApi.Services.HttpMethods;
 using Microsoft.EntityFrameworkCore;
+using SchoolApi.Models.Dtos;
 
 
-namespace "$project_name".Services."$global_model_naming"Repository.Methods
+namespace SchoolApi.Services.StudentsRepository.Methods
 {
-  public class "$global_model_naming"Update: IHttpPut<"$model_name">
+  public class StudentsUpdate: IHttpPut<Student>
   {
-    private readonly "$db_context_name" _"$db_context_field";
-    public "$global_model_naming"Update("$db_context_name" "$db_context_field"){
-      _"$db_context_field" = "$db_context_field";
+    private readonly BaseContext _context;
+    public StudentsUpdate(BaseContext context){
+      _context = context;
     }
 
-    public "$http_put_return" Update(int id, "$model_name" "$model_name_argument")
+    public Response<Student> Update(int id, Student student)
     {
-      "$model_name_argument".Id = id;
-      _context.Entry("$model_name_argument").State = EntityState.Modified;
+      student.Id = id;
+      _context.Entry(student).State = EntityState.Modified;
       _context.SaveChanges();
-      return "$model_name_argument";
+      return new Response<Student>(student, $"Student ID: {student.Id}, was updated");
     }
   } 
 }

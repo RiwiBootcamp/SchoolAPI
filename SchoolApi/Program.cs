@@ -1,5 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using SchoolApi.Data;
+using SchoolApi.Services.CoursesRepository;
+using SchoolApi.Services.EnrollmentsRepository;
+using SchoolApi.Services.StudentsRepository;
 using SchoolApi.Services.TeachersRepository;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,6 +26,9 @@ builder.Services.AddDbContext<BaseContext> ( options =>
 
 // Inyection of dependencies in Controllers
 builder.Services.AddScoped<ITeachersRepository, TeachersRepository>();
+builder.Services.AddScoped<IStudentsRepository, StudentsRepository>();
+builder.Services.AddScoped<IEnrollmentsRepository, EnrollmentsRepository>();
+builder.Services.AddScoped<ICoursesRepository, CoursesRepository>();
 
 
 //----- END PERSONAL SERVICES -----//

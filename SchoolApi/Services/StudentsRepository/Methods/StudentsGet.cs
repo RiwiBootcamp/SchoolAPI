@@ -1,25 +1,48 @@
-using "$project_name".Data;
-using "$project_name".Models;
-using "$project_name".Services.HttpMethods;
+using SchoolApi.Data;
+using SchoolApi.Models;
+using SchoolApi.Models.Dtos;
+using SchoolApi.Services.HttpMethods;
 
-namespace "$project_name".Services."$global_model_naming"Repository.Methods
+namespace SchoolApi.Services.StudentsRepository.Methods
 {
-  public class "$global_model_naming"Get: IHttpGet<"$model_name">
+  public class StudentsGet: IHttpGet<Student>
   {
     // BaseContext _context
-    private readonly "$db_context_name" _"$db_context_field";
-    public "$global_model_naming"Get("$db_context_name" "$db_context_field"){
-      _"$db_context_field" = "$db_context_field";
+    private readonly BaseContext _context;
+    public StudentsGet(BaseContext context){
+      _context = context;
     }
-        
-    public "$http_getAll_return" GetAll()
+    public Response<IEnumerable<Student>> GetAll()
     {
-      return _"$db_context_field"."$global_model_naming".ToList();
+      var data = _context.Students.ToList();
+
+      return new Response<IEnumerable<Student>>(data, "This is all data from students");
     }
 
-    public "$http_getById_return" GetById(int id)
+    public Response<Student> GetById(int id)
     {
-      return _"$db_context_field"."$global_model_naming".Find(id);
+      var data = _context.Students.Find(id);
+      return new Response<Student>(data, "Student was founded");
+    }
+
+    public PageResponse<IEnumerable<Student>> GetAll(int pageNumber)
+    {
+      int pageSize = 2;
+      var data = _context.Students
+        .Skip((pageNumber -1) * pageSize)
+        .Take(pageSize)
+        .ToList();
+
+      return new PageResponse<IEnumerable<Student>>(data, pageNumber, pageSize, "This is data for students");
+    }
+
+    public Response<IEnumerable<Student>> GetStudentBirthDay(DateOnly birthDay)
+    {
+      var data = _context.Students
+        .Where(x => x.BirthDate == birthDay)
+        .ToList();
+
+      return new Response<IEnumerable<Student>>(data, "This is all data from students");
     }
   } 
 }
