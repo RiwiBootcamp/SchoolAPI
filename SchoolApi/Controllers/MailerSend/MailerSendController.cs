@@ -20,10 +20,10 @@ namespace SchoolApi.Controllers
 
         Email newEmail = new Email
         {
-          From = new Recipent{Email = "dannyKentala@trial-pq3enl60en8l2vwr.mlsender.net"},
+          From = new Recipent{Email = "dannyKentala22@trial-z86org8o1d04ew13.mlsender.net"},
           To = 
           [
-            new Recipent{Email = "gafitig522@fresec.com"}
+            new Recipent{Email = "handres41@outlook.com"}
           ],
           Subject = "Email from backend",
           Html = "This is an email generate from backend, backend i'm loving it"

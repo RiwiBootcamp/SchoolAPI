@@ -16,7 +16,7 @@ namespace SchoolApi.Helpers
       {
         _options = new EmailClientOptions()
         {
-          ApiToken= "mlsn.ea53d2d62c5b62333be9a2106064e6922bf3658c9769db63f9d48b5d94afe71b",
+          ApiToken= "mlsn.fbffcfd83e0d0d1fdae55c63061cd045168ea43b1f70e7b0717d43cee6abddf1",
           ApiUrl= "https://api.mailersend.com/v1/email"
         };
       } 

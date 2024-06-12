@@ -10,7 +10,7 @@ namespace SchoolApi.Services.EnrollmentsRepository
     {
       Email newEmail = new Email
       {
-        From = new Recipent{Email = "dannyKentala@trial-pq3enl60en8l2vwr.mlsender.net"},
+        From = new Recipent{Email = "dannyKentala22@trial-z86org8o1d04ew13.mlsender.net"},
         To = 
         [
           /* Try to use a real email 
@@ -18,7 +18,12 @@ namespace SchoolApi.Services.EnrollmentsRepository
             https://temp-mail.org/en/view/
           */
 
-          new Recipent{Email = studentInfo.Email}
+          // new Recipent{Email = studentInfo.Email}
+          /*
+            ## DOT SEND EMAIL TO ALL EMAILS
+            Because it will put a email recipent limit!!
+          */
+          new Recipent{Email = "handres41@outlook.com"}
         ],
         Subject = "Confirmation email",
         Html = $"Congratulations your are now enrolled in the course: Good"
